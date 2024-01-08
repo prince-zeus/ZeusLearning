@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-2 Pre Training Work</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <form name="myForm">
+        <h1 id="web-title">My first web page</h1>
+        <h3>What this is</h3>
+        <p>Welcome to <i>my first webpage</i>. I created this webpage without the assistnace of a webpage editor. Just my little text editor and a keen <b>understanding of html</b></p>
+        <h3>Why this is</h3>
+        <ul>
+            <li>To learn HTML</li>
+            <li>
+                List element
+                <ol>
+                    <li>Home</li>
+                    <li>FAQ</li>
+                    <li>Contact</li>
+                    <li>Above</li>
+                </ol>
+            </li>
+            <li>Here I have created ordered and unordered list</li>
+        </ul>
+        <h3>ZeusLearning.com</h3>
+        <p><a href="https://www.zeuslearning.com/" target="_blank">This link will open zeuslearning.com in new tab</a></p>
+        <h3>On click of following image naviage to Google.com</h3>
+        <a href="https://www.google.com"><img src="https://1000logos.net/wp-content/uploads/2021/05/Google-logo.png" alt="Google Logo" height="50px"></a>
+        <h4>Some random table</h4>
+        <table border="1px solid black">
+            <tr>
+                <td>Row 1, cell 1</td>
+                <td>Row 1, cell 2</td>
+                <td>Row 1, cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 2, cell 1</td>
+                <td>Row 2, cell 2</td>
+                <td>Row 2, cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 3, cell 1</td>
+                <td>Row 3, cell 2</td>
+                <td>Row 3, cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 4, cell 1</td>
+                <td>Row 4, cell 2</td>
+                <td>Row 4, cell 3</td>
+            </tr>
+        </table>
+        <h4>Some random form</h4>
+        <p><b>Note:</b> It looks the part, but won't do a anything</p>
+        <p>Name:</p>
+        <input type="text" placeholder="Your Name" id="name-input" name="name-input" required>
+        <p>Comments:</p>
+        <textarea name="textarea" id="comment-input" placeholder="Your Comments" name="comment-input" style="overflow-y: scroll;resize: none;height: 150px;" required></textarea>
+        <p>Are you:</p>
+        <div class="select-radio">
+            <p class="radio">
+                <input id="male" name="gender" type="radio" value="male">
+                <label for="male" class="radio-label">Male</label>
+            </p>
+            <p class="radio">
+                <input id="female" name="gender" type="radio" value="female">
+                <label for="female" class="radio-label">Female</label>
+            </p>
+        </div>
+        <input type="button" value="Submit Query" onclick="validateForm()">
+    </form>
+</body>
+</html>

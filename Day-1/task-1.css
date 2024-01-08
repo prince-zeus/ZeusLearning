@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    height: 138px;
+    width: 457px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.card {
+    display: flex;
+    margin: 4px;
+    gap: 14px;
+}
+
+.person-image {
+    height: 130px;
+    width: 130px;
+}
+
+.person-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 305px;
+}
+
+.person-username {
+    font-size: 20px;
+    color: #000000;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.person-caption {
+    font-size: 20px;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.action-button {
+    display: flex;
+    gap: 14px;
+}
+
+.action-button-image {
+    height: 20px;
+    width: 20px;
+}
+
+.action-button-info {
+    font-size: 15px;
+    color: #858991;
+    font-weight: 500;
+}
