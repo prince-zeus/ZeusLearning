@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="teacher-dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <img src="assets/icons/logo used in header.svg" alt="">
+        <div class="flex header-actions">
+            <div class="action display active">Dashboard</div>
+            <div class="action display">Content</div>
+            <div class="action display">Users</div>
+            <div class="action display">Reports</div>
+            <div class="action display">Admin</div>
+            <div class="parent">
+                <img src="assets/icons/alerts.svg" alt="Aleart Logo" class="action aleart-logo">
+                <div class="aleart-count child">2</div>
+            </div>
+            <div class="parent">
+                <img src="assets/icons/announcements.svg" alt="Announcement Logo" class="action announcement-logo">
+                <div class="announcement-count child">1</div>
+            </div>
+            <div class="parent">
+                <img src="https://qph.cf2.quoracdn.net/main-qimg-228c725b76e58fd97f78efcda2cec96a-lq" alt="Profile Logo" class="action profile-logo parent">
+                <div class="profile-first-character child">V</div>
+            </div>
+            <img src="assets/icons/hamburger-menu.svg" alt="Hammer Logo" class="action display-none">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="flex tabs">
+            <div class="flex tab active">
+                <img src="assets/icons/courses.svg" alt="Courses Logo" class="tab-icon">
+                <b>4</b>
+                <Span>Courses</Span>
+            </div>
+            <div class="flex tab">
+                <div class="flex tab">
+                    <img src="assets/icons/classes.svg" alt="Classes Logo" class="tab-icon">
+                    <b>4</b>
+                    <Span>Classes</Span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex results">
+            <div class="flex result-count">Showing 4 of 4 courses</div>
+            <div class="flex sort-container">
+                <div class="content">Sort By:</div>
+                <select name="sort-by" id="sort-by">
+                    <option value="course-name">Course Name</option>
+                </select>
+                <img src="assets/icons/sort.svg" alt="Sort Icon" class="sort-icon">
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="expired">EXPIRED</div>
+                <div class="card-container">
+                    <img src="assets/images/imageMask-1.svg" alt="Card Image" class="card-image">
+                    <div class="card-information">
+                        <div class="flex">
+                            <div class="card-title">Acceleration</div>
+                            <img src="assets/icons/favourite.svg" alt="" class="card-star">
+                        </div>
+                        <div class="flex">Physics | Grade 7<span>+2</span></div>
+                        <div class="flex"><b>4</b><span>Units</span><b>18</b><span>Lessons</span><b>24</b><span>Topics</span></div>
+                        <select name="classes" id="classes" class="card-select">
+                            <option value="1">Mr. Frank's Class B</option>
+                        </select>
+                        <div class="flex">50 Students | 21-Jan-2020 - 21-Aug-2020</div>
+                    </div>
+                </div>
+                <div class="horizontal-line">
+
+                </div>
+                <div class="card-actions">
+                    <img src="assets/icons/preview.svg" alt="" class="card-action">
+                    <img src="assets/icons/manage course.svg" alt="" class="card-action">
+                    <img src="assets/icons/grade submissions.svg" alt="" class="card-action">
+                    <img src="assets/icons/reports.svg" alt="" class="card-action">
+                </div>
+            </div>
+            <div class="card">
+                <div class="expired">EXPIRED</div>
+                <div class="card-container">
+                    <img src="assets/images/imageMask-2.svg" alt="Card Image" class="card-image">
+                    <div class="card-information">
+                        <div class="flex">
+                            <div class="card-title">Displacement, Velocity and Speed</div>
+                            <img src="assets/icons/favourite.svg" alt="" class="card-star">
+                        </div>
+                        <div class="flex">Physics 2 | Grade 6<span>+3</span></div>
+                        <div class="flex"><b>2</b><span>Units</span><b>15</b><span>Lessons</span><b>20</b><span>Topics</span></div>
+                        <select name="classes" id="classes" class="card-select">
+                            <option value="1">No Classes</option>
+                        </select>
+                        <div class="flex display-none"></div>
+                    </div>
+                </div>
+                <div class="horizontal-line"></div>
+                <div class="card-actions">
+                    <img src="assets/icons/preview.svg" alt="" class="card-action">
+                    <img src="assets/icons/manage course.svg" alt="" class="card-action display-light">
+                    <img src="assets/icons/grade submissions.svg" alt="" class="card-action display-light">
+                    <img src="assets/icons/reports.svg" alt="" class="card-action">
+                </div>
+            </div>
+            <div class="card">
+                <div class="expired">EXPIRED</div>
+                <div class="card-container">
+                    <img src="assets/images/imageMask.svg" alt="Card Image" class="card-image">
+                    <div class="card-information">
+                        <div class="flex">
+                            <div class="card-title">Introduction to Biology: Micro organisms and how they affect to the </div>
+                            <img src="assets/icons/favourite.svg" alt="" class="card-star">
+                        </div>
+                        <div class="flex">Biology | Grade 4<span>+1</span></div>
+                        <div class="flex"><b>5</b><span>Units</span><b>16</b><span>Lessons</span><b>22</b><span>Topics</span></div>
+                        <select name="classes" id="classes" class="card-select">
+                            <option value="1">All Classes</option>
+                        </select>
+                        <div class="flex">300 Students</div>
+                    </div>
+                </div>
+                <div class="horizontal-line">
+
+                </div>
+                <div class="card-actions">
+                    <img src="assets/icons/preview.svg" alt="" class="card-action">
+                    <img src="assets/icons/manage course.svg" alt="" class="card-action display-light">
+                    <img src="assets/icons/grade submissions.svg" alt="" class="card-action display-light">
+                    <img src="assets/icons/reports.svg" alt="" class="card-action">
+                </div>
+            </div>
+            <div class="card">
+                <div class="expired display">EXPIRED</div>
+                <div class="card-container">
+                    <img src="assets/images/imageMask-3.svg" alt="Card Image" class="card-image">
+                    <div class="card-information">
+                        <div class="flex">
+                            <div class="card-title">Introduction to High School Mathematics</div>
+                            <img src="assets/icons/favourite.svg" alt="" class="card-star unchecked">
+                        </div>
+                        <div class="flex">Mathematics | Grade 8<span>+3</span></div>
+                        <div class="flex display-none"><b>4</b><span>Units</span><b>18</b><span>Lessons</span><b>24</b><span>Topics</span></div>
+                        <select name="classes" id="classes" class="card-select">
+                            <option value="1">Mr. Frank's Class A</option>
+                        </select>
+                        <div class="flex">44 Students  |  14-Oct-2019 - 20-Oct-2020</div>
+                    </div>
+                </div>
+                <div class="horizontal-line">
+
+                </div>
+                <div class="card-actions">
+                    <img src="assets/icons/preview.svg" alt="" class="card-action">
+                    <img src="assets/icons/manage course.svg" alt="" class="card-action">
+                    <img src="assets/icons/grade submissions.svg" alt="" class="card-action">
+                    <img src="assets/icons/reports.svg" alt="" class="card-action">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="flex links">
+            About | Contact Us
+        </div>
+        <div class="flex footer-main">
+            <img class="footer-image" src="assets/quantum screen assets/icons/logo used in footer.svg" alt="Footer Logo">
+            <div class="vertical-line-16"></div>
+            <div class="footer-content">
+                Copyright &#169; 2020-2021 <b>Zeus Systems Pvt. Ltd.</b> All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

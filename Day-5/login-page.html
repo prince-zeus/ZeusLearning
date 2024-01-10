@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Login Page</title>
+    <link rel="stylesheet" href="login-page.css">
+</head>
+<body>
+    <header class="login-header">
+        <img src="assets/icons/logo used in header.svg" alt="">
+    </header>
+
+    <div class="container">
+        <form class="login-card">
+            <div class="header">
+                <img src="assets/icons/back.svg" alt="Back Button" class="back-button">
+                <div class="title">Log in with Quantum</div>
+            </div>
+
+            <div class="school-type">
+                <div class="flex">
+                    <input type="radio" class="radio-button" name="school-type" value="district" id="district">
+                    <label class="radio-button-label" for="district">District</label>
+                </div>
+                <div class="flex">
+                    <input type="radio" class="radio-button" name="school-type" value="indepent-school" id="indepent-school">
+                    <label class="radio-button-label" for="indepent-school">Independent school</label>
+                </div>
+            </div>
+
+            <div class="flex direction-column dropdown">
+                <label for="state-select" class="title">State*</label>
+                <select name="state" id="state-select">
+                    <option value="alabama">Alabama</option>
+                </select>
+            </div>
+
+            <div class="flex direction-column dropdown dropdown-margin">
+                <label for="district-select" class="title">District*</label>
+                <select name="state" id="district-select">
+                    <option value="alabama-school-district">Alabama School District</option>
+                </select>
+            </div>
+
+            <div class="flex direction-column text-field-container">
+                <input type="text" class="text-field" placeholder="Username/Email ID*">
+                <a href="" class="forgot-link">FORGOT USERNAME?</a>
+            </div>
+
+            <div class="flex direction-column text-field-container text-field-container-margin">
+                <input type="password" class="text-field" placeholder="Password*">
+                <a href="" class="forgot-link">FORGOT PASSWORD?</a>
+            </div>
+
+            <div class="flex remember-me-container">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+
+            <div class="flex login-button-margin">
+                <input class="login-button" type="button" value="LOG IN" onclick="validateForm()">
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="flex links">
+            About | Contact Us
+        </div>
+        <div class="flex footer-main">
+            <img class="footer-image" src="assets/quantum screen assets/icons/logo used in footer.svg" alt="Footer Logo">
+            <div class="vertical-line-16"></div>
+            <div class="footer-content">
+                Copyright &#169; 2020-2021 <b>Zeus Systems Pvt. Ltd.</b> All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
