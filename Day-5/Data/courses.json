@@ -1,0 +1,58 @@
+[
+    {
+        "card_image": "assets/images/imageMask-1.svg",
+        "card_title": "Acceleration",
+        "subject": "Physics",
+        "grade": "7",
+        "grade_point": "2",
+        "units": "4",
+        "lessons": "18",
+        "topics": "24",
+        "card_select": ["Mr. Frank's Class B"],
+        "students": "50",
+        "duration": "21-Jan-2020 - 21-Aug-2020",
+        "is_expired": false
+    },
+    {
+        "card_image": "assets/images/imageMask-2.svg",
+        "card_title": "Displacement, Velocity and Speed",
+        "subject": "Physics",
+        "grade": "6",
+        "grade_point": "3",
+        "units": "2",
+        "lessons": "15",
+        "topics": "20",
+        "card_select": ["No Classes"],
+        "students": "",
+        "duration": "",
+        "is_expired": false
+    },
+    {
+        "card_image": "assets/images/imageMask.svg",
+        "card_title": "Introduction to Biology: Micro organisms and how they affect to the ",
+        "subject": "Biology",
+        "grade": "4",
+        "grade_point": "1",
+        "units": "5",
+        "lessons": "16",
+        "topics": "22",
+        "card_select": ["All Classes"],
+        "students": "300",
+        "duration": "",
+        "is_expired": false
+    },
+    {
+        "card_image": "assets/images/imageMask-3.svg",
+        "card_title": "Introduction to High School Mathematics",
+        "subject": "Mathematics",
+        "grade": "8",
+        "grade_point": "3",
+        "units": "",
+        "lessons": "",
+        "topics": "",
+        "card_select": ["Mr. Frank's Class A"],
+        "students": "44",
+        "duration": "14-Oct-2019 - 20-Oct-2020",
+        "is_expired": true
+    }
+]
