@@ -200,7 +200,7 @@ body {
     grid-gap: 25px;
 }
 
-.card {
+.cards .card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -211,7 +211,7 @@ body {
     gap: 16px;
 }
 
-.card .expired {
+.cards .card .expired {
     position: absolute;
     display: none;
     left: 0;
@@ -225,27 +225,27 @@ body {
     padding: 4px 7px 2px 5px;
 }
 
-.card .expired.display {
+.cards .card .expired.display {
     display: flex;
 }
 
-.card .card-container {
+.cards .card .card-container {
     display: flex;
     gap: 16px;
 }
 
-.card .card-container .card-image {
+.cards .card .card-container .card-image {
     display: flex;
     height: 157px;
     width: 132px;
 }
 
-.card .card-container .card-information .flex:nth-child(1) {
+.cards .card .card-container .card-information .flex:nth-child(1) {
     justify-content: space-between;
     align-items: center;
 }
 
-.card .card-container .card-information .flex .card-title {
+.cards .card .card-container .card-information .flex .card-title {
     color: #222222;
     font-size: 16px;
     display: -webkit-box; 
@@ -255,47 +255,47 @@ body {
     text-overflow: ellipsis;
 }
 
-.card .card-container .card-information .flex .card-star {
+.cards .card .card-container .card-information .flex .card-star {
     position: absolute;
     right: 16px;
     font-size: 24px;
 }
 
-.card .card-container .card-information .flex .card-star.unchecked {
+.cards .card .card-container .card-information .flex .card-star.unchecked {
     fill: lightgrey !important;
 }
 
-.card .card-container .card-information .flex:nth-child(2) {
+.cards .card .card-container .card-information .flex:nth-child(2) {
     color: #666666;
     font-size: 12px;
     align-items: center;
     margin: 7px 0;
 }
 
-.card .card-container .card-information .flex:nth-child(2) > span {
+.cards .card .card-container .card-information .flex:nth-child(2) > span {
     color: #1F7A54;
     margin-left: 3px;
 }
 
-.card .card-container .card-information .flex:nth-child(3) {
+.cards .card .card-container .card-information .flex:nth-child(3) {
     font-size: 12px;
     align-items: center;
 }
 
-.card .card-container .card-information .flex:nth-child(3).display-none {
+.cards .card .card-container .card-information .flex:nth-child(3).display-none {
     display: none;
 }
 
-.card .card-container .card-information .flex:nth-child(3) > b {
+.cards .card .card-container .card-information .flex:nth-child(3) > b {
     color: #222222;
 }
 
-.card .card-container .card-information .flex:nth-child(3) > span {
+.cards .card .card-container .card-information .flex:nth-child(3) > span {
     color: #666666;
     margin: 0 6px;
 }
 
-.card .card-container .card-information > select {
+.cards .card .card-container .card-information > select {
     height: 27px;
     width: 264px;
     outline: none;
@@ -308,13 +308,13 @@ body {
     margin: 18px 0 8px 0;
 }
 
-.card .card-container .card-information .flex:nth-child(5) {
+.cards .card .card-container .card-information .flex:nth-child(5) {
     color: #666666;
     font-size: 12px;
     align-items: center;
 }
 
-.card .card-container .card-information .flex:nth-child(5).display-none {
+.cards .card .card-container .card-information .flex:nth-child(5).display-none {
     display: none;
 }
 
@@ -323,13 +323,13 @@ body {
     height: 0;
 }
 
-.card .card-actions {
+.cards .card .card-actions {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.card .card-actions .card-action.display-light {
+.cards .card .card-actions .card-action.display-light {
     opacity: 0.5;
 }
 
