@@ -51,8 +51,50 @@
         "lessons": "",
         "topics": "",
         "card_select": ["Mr. Frank's Class A"],
-        "students": "44",
+        "students": "27",
         "duration": "14-Oct-2019 - 20-Oct-2020",
         "is_expired": true
+    },
+    {
+        "card_image": "assets/images/imageMask-2.svg",
+        "card_title": "Introduction to Next JS",
+        "subject": "Computer",
+        "grade": "6",
+        "grade_point": "4",
+        "units": "12",
+        "lessons": "15",
+        "topics": "37",
+        "card_select": ["Mr. John's Class D"],
+        "students": "",
+        "duration": "14-Oct-2019 - 20-Oct-2020",
+        "is_expired": true
+    },
+    {
+        "card_image": "assets/images/imageMask.svg",
+        "card_title": "Introduction to Node js",
+        "subject": "Web Tech",
+        "grade": "7",
+        "grade_point": "5",
+        "units": "",
+        "lessons": "",
+        "topics": "",
+        "card_select": ["Mr. Frank's Class X"],
+        "students": "24",
+        "duration": "14-Oct-2019 - 20-Oct-2020",
+        "is_expired": false
+    },
+    {
+        "card_image": "assets/images/imageMask-3.svg",
+        "card_title": "Introduction to React JS",
+        "subject": "FrameWork",
+        "grade": "8",
+        "grade_point": "5",
+        "units": "12",
+        "lessons": "25",
+        "topics": "57",
+        "card_select": ["No Classes"],
+        "students": "48",
+        "duration": "",
+        "is_expired": false
     }
 ]

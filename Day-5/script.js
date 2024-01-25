@@ -25,7 +25,7 @@ var announcement_dropdown_menu = document.querySelector(".announcement-dropdown-
                     <select name="classes" id="classes" class="card-select">
                         ${Object.entries(card_select).map(([index, cs]) => `<option value="${index}">${cs}</option>`).join('')}
                     </select>
-                    <div class="flex">${(students.length > 0) ? `${students} Students` : ""}${(duration.length > 0) ? ` | ${duration}` : ""}</div>
+                    <div class="flex">${(students.length > 0) ? `${students} Students` : ""}${(duration.length > 0) ? ` ${(students.length > 0 ? "|" : "")} ${duration}` : ""}</div>
                 </div>
             </div>
             <div class="horizontal-line">
