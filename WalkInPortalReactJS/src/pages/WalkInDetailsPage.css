@@ -1,0 +1,246 @@
+.job-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: #EEEEEE;
+    /* Header :- 56px, Top and Bottom Padding:- 24px+24px, Header-Bottom-Border:2px */
+    min-height: calc(100vh - 106px);
+    gap: 24px;
+}
+
+.job-card-details {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 6px #0000003D;
+}
+
+.job-card-details .job-card-main-details {
+    box-shadow: none;
+    padding-bottom: 24px;
+}
+
+.job-card-main-details .apply-button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
+
+
+
+.job-card-main-details-collapse {
+    box-shadow: none;
+}
+
+.job-card-main-details-summary {
+    padding: 10px 0px 10px 16px;
+}
+
+/* Collapsible Closed */
+details{
+    position: relative;
+    box-shadow: 0px 4px 6px #0000003D;
+
+    /* This also draw same line drawn below */
+    /* background: linear-gradient(to left, #DBEFFF 0, #DBEFFF 32px, #1e000024 32px, #1e000024 33px, #DBEFFF 33px, #DBEFFF 100%); */
+}
+
+/* Create a vertical line on div without any other element */
+/* details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 32px;
+    width: 1px;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.12;
+} */
+
+details summary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 0px 18px 16px;
+    background: linear-gradient(to left, #DBEFFF 0, #DBEFFF 32px, #1e000024 32px, #1e000024 33px, #DBEFFF 33px, #DBEFFF 100%);
+}
+
+  /* Disable browser default marker */
+details summary::-webkit-details-marker, summary::marker{
+    content: "";
+    display: none;
+}
+
+   /* Custom marker */
+details summary::after{
+    content: url("../assets/expand_less_black_24dp.svg");
+    transform: rotate(180deg);
+    cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: -4px;
+    margin-bottom: 0;
+    height: 16px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+}
+
+/* this for all details not include summary */
+details *:not(summary) {
+    /* animation-name: fade;
+    animation-duration: .4s; */
+}
+
+details[open] summary::after {
+    transform: rotate(360deg);
+    margin-top: 0;
+    margin-bottom: -4px;
+    transition: all 0.1s linear;
+}
+
+.details-summary-collapse-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    background-color: white;
+}
+
+.details-summary-collapse-content .details-summary-collapse-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.details-summary-collapse-content-container .details-summary-collapse-content-text {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.details-summary-collapse-content-container .details-summary-collapse-content-text-details {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: pre-line;
+    line-height: 24px;
+}
+
+.details-summary-collapse-content .horizontal-line {
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.job-card-time-slot-preference-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    background-color: white;
+    box-shadow: 0px 4px 6px #0000003D;
+}
+
+.job-card-time-slot-preference-container .job-card-time-slot-preference-text {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.job-card-time-slot-preference-container .job-card-time-slot-container, .job-card-time-slot-preference-container .job-card-preference-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.job-card-time-slot-container .job-card-time-slot-text, .job-card-preference-container .job-card-preference-text{
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.job-card-time-slot-container .job-card-time-slot-radio-text, .job-card-preference-container .job-card-preference-checkbox-text, .job-card-time-slot-preference-container .job-card-upload-resume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-card-time-slot-radio-text > input, .job-card-preference-checkbox-text > input {
+    display: none;
+}
+
+.job-card-time-slot-radio-text > div, .job-card-preference-checkbox-text > div {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.job-card-time-slot-radio-text > label, .job-card-preference-checkbox-text > label {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.job-card-time-slot-preference-container .horizontal-line {
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.job-card-time-slot-radio-text > input[type=radio] + label {
+    display: flex;
+    outline: 0;
+    width: 20px;
+    height: 24px;
+    background: url("../assets/radio_button_unchecked_black_24dp.svg") no-repeat center;
+    filter: invert(35%) sepia(65%) saturate(462%) hue-rotate(103deg) brightness(95%) contrast(90%);
+}
+
+.job-card-time-slot-radio-text > input[type=radio]:checked + label {
+    background: url("../assets/radio_button_checked_black_24dp.svg") no-repeat center;
+}
+
+.job-card-preference-checkbox-text > input[type=checkbox] + label.job-card-checkbox {
+    display: flex;
+    cursor: pointer;
+    outline: 0;
+    width: 18px;
+    height: 24px;
+    background: url("../assets/check_box_outline_blank_black_24dp.svg") no-repeat center;
+    filter: invert(35%) sepia(65%) saturate(462%) hue-rotate(103deg) brightness(95%) contrast(90%);
+}
+
+.job-card-preference-checkbox-text > input[type=checkbox]:checked + label.job-card-checkbox {
+    background: url("../assets/check_box_black_24dp.svg") no-repeat center;
+}
+
+.job-card-upload-resume-container .job-card-upload-icon {
+    display: flex;
+    cursor: pointer;
+    outline: 0;
+    width: 14px;
+    height: 24px;
+    background: url("../assets//Upload_black_24dp.svg") no-repeat center;
+    filter: invert(35%) sepia(65%) saturate(462%) hue-rotate(103deg) brightness(95%) contrast(90%);
+}
+
+.job-card-upload-resume-container .job-card-upload-resume-text {
+    color: #1F7A54;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+
+
+
+.job-card-roles-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

@@ -1,0 +1,186 @@
+.listing-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: #EEEEEE;
+    /* Header :- 56px, Top and Bottom Padding:- 24px+24px, Header-Bottom-Border:2px */
+    min-height: calc(100vh - 106px);
+    gap: 24px;
+}
+
+.job-card-main-details {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 16px;
+    gap: 16px;
+    box-shadow: 0px 4px 6px #0000003D;
+    position: relative;
+}
+
+.job-card-main-details .job-card-title {
+    margin: 0;
+    color: #1F7A54;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.date-time-location-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date-time-location-container .date-time-text, .job-roles-container .job-role-text {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.date-time-location {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.date-time-location .date-time {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.date-time-location .vertical-line {
+    width: 1px;
+    height: 12px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.date-time-location .location-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.date-time-location .location-container .location-icon {
+    filter: invert(44%) sepia(0%) saturate(0%) hue-rotate(336deg) brightness(89%) contrast(92%);
+    height: 16px;
+    width: 16px;
+}
+
+.date-time-location .location-container .location-text {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.job-card-main-details .horizontal-line {
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.job-card-main-details .job-roles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.job-roles-container .job-roles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-roles .job-role-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-role-container .job-role-icon-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+    height: 23px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.job-role-icon-cover .job-role-icon {
+    width: 16px;
+    height: 16px; 
+}
+
+.job-role-container .job-role-title {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.job-roles .vertical-line {
+    width: 1px;
+    height: 12px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.job-card-main-details .job-tags-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-tags-container .job-tag-text {
+    display: flex;
+    align-items: center;
+    background-color: #EEDD6B;
+    columns: #222222;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    padding: 3px 8px;
+    border-radius: 9px;
+}
+
+.job-tags-container .vertical-line {
+    display: flex;
+    width: 1px;
+    height: 12px;
+    background-color: #000000;
+    opacity: 0.12;
+}
+
+.job-card-main-details .view-more-details-button, .job-card-main-details .apply-button, .application-success-job-card .download-hall-ticket-button, .login-card .login-button, .registration-page-actionbar-actions .registration-page-actionbar-cancel-button, .registration-page-actionbar-actions .registration-page-actionbar-create-button, .multi-step-buttons-container .multi-step-previous-button , .multi-step-buttons-container .multi-step-next-button {
+    font-family: 'Quicksand', sans-serif;
+    color: #25313F;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    background-color: #3FD28B;
+    border: none;
+    outline: none;
+    box-shadow: 0px 3px 5px #0000003D;
+    border-radius: 2px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.job-card-main-details .view-more-details-button {
+    margin-top: 8px;
+    align-self: center;
+}
+
+@media only screen and (max-width: 675px) {
+    .job-roles-container .job-roles {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-roles .vertical-line {
+        display: none;
+    }
+}

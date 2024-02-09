@@ -1,0 +1,503 @@
+.registration-page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-page-actionbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 24px;
+    min-height: 28px;
+    background-color: #3C4E62;
+}
+
+.registration-page-actionbar .registration-page-actionbar-back-icon {
+    filter: invert(74%) sepia(4%) saturate(4586%) hue-rotate(97deg) brightness(92%) contrast(91%);
+    rotate: 270deg;
+}
+
+.registration-page-actionbar .registration-page-actionbar-text {
+    /* position: absolute; */
+    margin: auto;
+    left: 0;
+    right: 0;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.registration-page-actionbar .registration-page-actionbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.registration-page-actionbar-actions .registration-page-actionbar-cancel-button {
+
+}
+
+.registration-page-actionbar-actions .registration-page-actionbar-create-button {
+
+}
+
+.multi-step-form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: #EEEEEE;
+    /* Header :- 56px, Top and Bottom Padding:- 24px+24px, Header-Bottom-Border:2px, Registration ActionBar - 48px */
+    min-height: calc(100vh - 154px);
+    gap: 24px;
+}
+
+.multi-step-form-progress-bar {
+    background-color: white;
+    padding-left: 30px;
+}
+
+/* Now We can Build Mutli Step From Progress Bar */
+#checkout-progress {
+    width: calc(100% - 200px);
+    /* margin: 0px auto; */
+    position: relative;
+  }
+  #checkout-progress:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 3px;
+    width: 100%;
+    background-color: #ccc;
+    -webkit-transform: translateY(-50%) perspective(1000px);
+            transform: translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 3px;
+    width: 100%;
+    background-color: #222222;
+    -webkit-transform: scaleX(0) translateY(-50%) perspective(1000px);
+            transform: scaleX(0) translateY(-50%) perspective(1000px);
+    -webkit-transform-origin: left center;
+            transform-origin: left center;
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  }
+  #checkout-progress.step-2:after {
+    -webkit-transform: scaleX(0.5) translateY(-50%) perspective(1000px);
+            transform: scaleX(0.5) translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress.step-3:after {
+    -webkit-transform: scaleX(1) translateY(-50%) perspective(1000px);
+            transform: scaleX(1) translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress.step-4:after {
+    -webkit-transform: scaleX(1) translateY(-50%) perspective(1000px);
+            transform: scaleX(1) translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress.step-5:after {
+    -webkit-transform: scaleX(1) translateY(-50%) perspective(1000px);
+            transform: scaleX(1) translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress.step-6:after {
+    -webkit-transform: scaleX(1) translateY(-50%) perspective(1000px);
+            transform: scaleX(1) translateY(-50%) perspective(1000px);
+  }
+  #checkout-progress .progress-bar {
+    width: 100%;
+    display: flex;
+    height: 56px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #checkout-progress .progress-bar .step {
+    z-index: 2;
+    position: relative;
+  }
+  #checkout-progress .progress-bar .step .step-label {
+    /* position: absolute;
+    left: calc(100% + 25px);
+    right: 50%;
+    top: 0; */
+    padding: 0px 10px;
+    position: absolute;
+    left: 113px;
+    right: -287px;
+    top: 0;
+    background-color: white;
+    -webkit-transform: translateX(-50%) perspective(1000px);
+            transform: translateX(-50%) perspective(1000px);
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    transition: 0.3s ease;
+  }
+  @media (max-width: 767px) {
+    #checkout-progress .progress-bar .step .step-label {
+      left: calc(100% + 25px);
+    }
+  }
+  #checkout-progress .progress-bar .step span {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    display: block;
+    -webkit-transform: translate3d(0, 0, 0) scale(1) perspective(1000px);
+            transform: translate3d(0, 0, 0) scale(1) perspective(1000px);
+  }
+  #checkout-progress .progress-bar .step .edit-icon {
+    color: #222222;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 16px;
+    width: 16px;
+    background: url("../assets/pen.svg") no-repeat center;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(0) perspective(1000px);
+            transform: translate3d(-50%, -50%, 0) scale(0) perspective(1000px);
+  }
+  #checkout-progress .progress-bar .step.active span, #checkout-progress .progress-bar .step.active .step-label {
+    color: #222222;
+  }
+
+  #checkout-progress .progress-bar .step.valid span {
+    color: #3FD28B;
+  }
+
+  #checkout-progress .progress-bar .step.valid .step-label {
+    color: #222222;
+  }
+
+  #checkout-progress .progress-bar .step.valid .edit-icon {
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(1) perspective(1000px);
+            transform: translate3d(-50%, -50%, 0) scale(1) perspective(1000px);
+  }
+  #checkout-progress .progress-bar .step.valid span {
+    -webkit-transform: translate3d(0, 0, 0) scale(2) perspective(1000px);
+            transform: translate3d(0, 0, 0) scale(2) perspective(1000px);
+  }
+  #checkout-progress .progress-bar .step:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) perspective(1000px);
+            transform: translate(-50%, -50%) perspective(1000px);
+    width: 32px;
+    height: 32px;
+    background-color: #757575;
+    border-radius: 50%;
+    /* border: 5px solid #ccc; */
+    transition: 0.3s ease;
+  }
+  @media (max-width: 767px) {
+    #checkout-progress .progress-bar .step:after {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  #checkout-progress .progress-bar .step.active:after, #checkout-progress .progress-bar .step.valid:after {
+    background-color: #3FD28B;
+    /* border: 5px solid #2C3E50; */
+  }
+
+
+.multi-step-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.multi-step-form .page {
+    opacity: 0;
+    display: none;
+    transition: all 0.2s ease-out;
+}
+
+.multi-step-form .page.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Page 1 All Css */
+.multi-step-form .page-1 {
+    display: none;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    background-color: white;
+    padding: 24px;
+}
+
+.page-1 .registration-title-text-field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.registration-title-text-field-container .registration-text-field-title {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+    max-width: 480px;
+}
+
+.registration-title-text-field-container .registration-text-field, .registration-phone-number-container .registration-country-code-text-field, .registration-phone-number-container .registration-phone-number-text-field {
+    outline: none;
+    border: none;
+    padding: 3px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    border-bottom: 1px solid #999999;
+    color: #666666;
+}
+
+.registration-title-text-field-container .width-480 {
+    width: 480px;
+}
+
+.registration-title-text-field-container .registration-phone-number-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.registration-phone-number-container > div::after {
+    content: '+';
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]::placeholder {
+             
+    /* Firefox, Chrome, Opera */
+    text-align: center;
+}
+
+.registration-phone-number-container .registration-country-code-text-field {
+    width: 22px;
+} 
+ 
+.registration-phone-number-container .registration-phone-number-text-field {
+    width: 95px;
+}
+
+.page-1 .job-card-upload-resume-container, .page-1 .job-card-preference-checkbox-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-1 .job-card-preference-container, .experience-professional-qualification-applicant-container .job-card-preference-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.page-1 .registration-upload-display-picture-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+}
+
+.registration-upload-display-picture-container > img {
+    padding: 15px 19px;
+}
+
+.registration-upload-display-picture-container .registration-upload-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.registration-upload-text-container .registration-upload-display-picture-button {
+    color: #1F7A54;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.registration-upload-text-container .registration-upload-display-picture-max-size {
+    color: #757575;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Page 2 Css */
+.multi-step-form .page-2 {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.educational-qualifications-collapse-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 40px;
+    background-color: white;
+}
+
+.educational-qualifications-collapse-container .registration-title-text-field-container, .registration-text-field-list .registration-title-text-field-container, .experience-professional-qualification-applicant-container .registration-title-text-field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.registration-title-text-field-container > select {
+    outline: none;
+    border: none;
+    padding: 3px 0px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    border-bottom: 1px solid #999999;
+    color: #222222;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+}
+
+.registration-title-text-field-container .width-180 {
+    width: 180px;
+}
+
+.registration-title-text-field-container .width-half {
+    width: calc(50% - 12px);
+}
+
+.educational-qualifications-collapse-container .registration-text-field-list, .experience-professional-qualification-applicant-container .registration-text-field-list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.registration-text-field-list .registration-title-text-field-container {
+    flex: 1;
+}
+
+.professional-qualifications-collapse-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.professional-qualifications-collapse-container .professional-qualifications-applicant-type-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 13px;
+    background-color: white;
+}
+
+.professional-qualifications-applicant-type-container .professional-qualifications-applicant-type-text, .experience-professional-qualifications-applican-container .professional-qualifications-applicant-type-text {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.professional-qualifications-applicant-type-container .professional-qualifications-applicant-type-radio-container, .experience-professional-qualifications-applican-container .professional-qualifications-applicant-type-radio-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.professional-qualifications-applicant-type-radio-container .job-card-time-slot-radio-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.experience-professional-qualification-applicant-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 40px;
+    background-color: white;
+}
+
+.experience-professional-qualification-applicant-container .experience-professional-qualifications-applican-container{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+/* Page 3 All Css */
+.multi-step-form .registration-preview-edit-container {
+    display: none;
+    align-items: center;
+}
+
+.multi-step-form .registration-preview-edit-container.active {
+    display: flex;
+}
+
+.registration-preview-edit-container .registration-preview-title {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.registration-preview-edit-container .registration-preview-edit-button-container {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.registration-preview-edit-button-container .registration-preview-edit-icon {
+    width: 18px;
+    height: 18px;
+    filter: invert(41%) sepia(10%) saturate(2567%) hue-rotate(103deg) brightness(91%) contrast(92%);
+}
+
+.registration-preview-edit-button-container .registration-preview-edit-text {
+    color: #1F7A54;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+.multi-step-buttons-container {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+}
+
+.multi-step-buttons-container .multi-step-previous-button {
+
+}
+
+.multi-step-buttons-container .multi-step-next-button {
+    padding: 5px 27px;
+}
+
+.multi-step-buttons-container .disabled {
+    display: none;
+}

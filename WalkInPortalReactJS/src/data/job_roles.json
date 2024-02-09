@@ -1,0 +1,27 @@
+[
+    {
+        "job_role_id": 1,
+        "job_role_icon": "/src/assets/Instructional Designer.svg",
+        "job_role_title": "Instructional Designer",
+        "gross_compensation_package": "Rs. 5,00,000 lpa",
+        "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance",
+        "requirements": "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+    },
+    {
+        "job_role_id": 2,
+        "job_role_icon": "/src/assets/Software Quality Engineer.svg",
+        "job_role_title": "Software Engineer",
+        "gross_compensation_package": "Rs. 3,00,000 lpa",
+        "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance",
+        "requirements": "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+    },
+    {
+        "job_role_id": 3,
+        "job_role_icon": "/src/assets/Software Quality Engineer.svg",
+        "job_role_title": "Software Quality Engineer",
+        "gross_compensation_package": "Rs. 8,00,000 lpa",
+        "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance",
+        "requirements": "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+    }
+
+]

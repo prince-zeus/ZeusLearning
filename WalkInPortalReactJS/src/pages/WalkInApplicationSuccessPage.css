@@ -1,0 +1,70 @@
+.application-success-job-card-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: #EEEEEE;
+    /* Header :- 56px, Top and Bottom Padding:- 24px+24px, Header-Bottom-Border:2px */
+    min-height: calc(100vh - 106px);
+    gap: 24px;
+}
+
+.application-success-job-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 16px;
+    gap: 16px;
+    box-shadow: 0px 4px 6px #0000003D;
+    position: relative;
+    margin-top: 50px;
+}
+
+.application-success-job-car-title {
+    color: #222222;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-top: 58px;
+    margin-bottom: 8px;
+}
+
+.application-success-job-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #18BE2E;
+}
+
+.application-success-job-card .details-summary-collapse-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.application-success-job-card .download-hall-ticket-button {
+    margin-top: 8px;
+    align-self: center;
+    margin-bottom: 8px;
+}
+
+.application-success-job-card-icon > img {
+    width: 60px;
+    height: 60px;
+    filter: invert(99%) sepia(2%) saturate(872%) hue-rotate(220deg) brightness(118%) contrast(100%);
+}
+
+.application-success-job-card .horizontal-line {
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.12;
+}
