@@ -19,11 +19,11 @@ USE `WalkInPortal` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`job_card` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
+  `job_title` VARCHAR(60) NOT NULL,
   `dateandtime` VARCHAR(45) NOT NULL,
-  `location` VARCHAR(20) NOT NULL,
+  `location` VARCHAR(100) NOT NULL,
   `general_instructions` TEXT NULL,
-  `instructions_for_exam` TEXT NULL,
+  `instructions_for_the_exam` TEXT NULL,
   `min_system_requirements` TEXT NULL,
   `process` TEXT NULL,
   PRIMARY KEY (`id`),
@@ -36,11 +36,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`job_roles` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
-  `icon` VARCHAR(45) NOT NULL,
-  `gross_compensastion_package` DOUBLE NULL,
-  `role_description` VARCHAR(100) NULL,
-  `requirements` VARCHAR(100) NULL,
+  `job_role_icon` VARCHAR(300) NOT NULL,
+  `job_role_title` VARCHAR(100) NOT NULL,
+  `gross_compensation_package` TEXT NULL,
+  `role_description` TEXT NULL,
+  `requirements` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`users` (
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `phone_number` VARCHAR(45) NOT NULL,
-  `profile_image` VARCHAR(45) NULL,
-  `resume` VARCHAR(45) NULL,
-  `portfolio_url` VARCHAR(45) NULL,
+  `profile_image` VARCHAR(300) NULL,
+  `resume` VARCHAR(300) NULL,
+  `portfolio_url` VARCHAR(300) NULL,
   `reffered_name` VARCHAR(45) NULL,
   `is_email_notification` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
@@ -70,7 +70,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`qualifications` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
+  `qualification_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -80,7 +80,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`streams` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
+  `stream_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -90,7 +90,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`colleges` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
+  `college_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -102,11 +102,12 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`educational_qualifications` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `aggreagate_percentage` INT NOT NULL,
   `year_of_passing` INT NOT NULL,
-  `college_location` VARCHAR(45) NOT NULL,
+  `college_location` VARCHAR(100) NOT NULL,
   `users_id` INT NOT NULL,
   `qualifications_id` INT NOT NULL,
   `streams_id` INT NOT NULL,
   `colleges_id` INT NOT NULL,
+  `other_college_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_educational_qualifications_users1_idx` (`users_id` ASC) VISIBLE,
   INDEX `fk_educational_qualifications_qualifications1_idx` (`qualifications_id` ASC) VISIBLE,
@@ -139,12 +140,11 @@ ENGINE = InnoDB;
 -- Table `WalkInPortal`.`experienced_professional_qualifications`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`experienced_professional_qualifications` (
-  `applicant_type` VARCHAR(45) NOT NULL,
   `year_of_experience` INT NOT NULL,
   `current_ctc` INT NOT NULL,
   `expected_ctc` INT NOT NULL,
-  `experience_technologies` VARCHAR(45) NOT NULL,
-  `familiar_technologies` VARCHAR(45) NOT NULL,
+  `other_experience_technologies` VARCHAR(60) NOT NULL,
+  `other_familiar_technologies` VARCHAR(60) NOT NULL,
   `on_notice_period` TINYINT NOT NULL,
   `notice_period_end_date` DATETIME NULL,
   `notice_period_duration` VARCHAR(45) NULL,
@@ -165,7 +165,7 @@ ENGINE = InnoDB;
 -- Table `WalkInPortal`.`fresher_professional_qualifications`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`fresher_professional_qualifications` (
-  `familiar_technologies` VARCHAR(45) NOT NULL,
+  `other_familiar_technologies` VARCHAR(60) NOT NULL,
   `test_appearence` TINYINT NOT NULL,
   `test_appearence_role` VARCHAR(45) NULL,
   `users_id` INT NOT NULL,
@@ -184,7 +184,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`technology` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `technology` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -245,7 +245,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`job_tags` (
   `job_card_id` INT NOT NULL,
-  `tag` VARCHAR(45) NOT NULL,
+  `tag` VARCHAR(100) NOT NULL,
   INDEX `fk_job_tags_job_card1_idx` (`job_card_id` ASC) VISIBLE,
   CONSTRAINT `fk_job_tags_job_card1`
     FOREIGN KEY (`job_card_id`)
@@ -280,8 +280,8 @@ ENGINE = InnoDB;
 -- Table `WalkInPortal`.`time_slots`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`time_slots` (
-  `id` INT NOT NULL,
-  `time` VARCHAR(45) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `time` VARCHAR(60) NOT NULL,
   `job_card_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_time_slots_job_card1_idx` (`job_card_id` ASC) VISIBLE,
@@ -298,7 +298,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `WalkInPortal`.`user_applied_job_details` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `resume_link` VARCHAR(45) NOT NULL,
+  `resume_link` VARCHAR(100) NOT NULL,
   `time_slots_id` INT NOT NULL,
   `users_id` INT NOT NULL,
   PRIMARY KEY (`id`, `users_id`),
@@ -337,12 +337,30 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`user_applied_job_roles_preference` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `WalkInPortal`.`job_card_job_roles_preference`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `WalkInPortal`.`job_card_job_roles_preference` (
+  `job_roles_id` INT NOT NULL,
+  `job_card_id` INT NOT NULL,
+  INDEX `fk_job_card_job_roles_preference_job_roles1_idx` (`job_roles_id` ASC) VISIBLE,
+  INDEX `fk_job_card_job_roles_preference_job_card1_idx` (`job_card_id` ASC) VISIBLE,
+  CONSTRAINT `fk_job_card_job_roles_preference_job_roles1`
+    FOREIGN KEY (`job_roles_id`)
+    REFERENCES `WalkInPortal`.`job_roles` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_job_card_job_roles_preference_job_card1`
+    FOREIGN KEY (`job_card_id`)
+    REFERENCES `WalkInPortal`.`job_card` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 -- Added Tables
-INSERT INTO walkinportal.users (first_name, last_name, email, phone_number, profile_image, resume, portfolio_url, reffered_name, is_email_notification) VALUES
-("Prince", "Dhameliya", "prince@gmail.com", 9876543210, "www.profile.com", "fksjfk", "fdfdfd", "shubham", 0);
-
-
-INSERT INTO walkinportal.colleges (name) VALUES
+INSERT INTO walkinportal.colleges (college_name) VALUES
 ('Indian Institute of Technology (IIT), Bombay'),
 ('Delhi University, Delhi'),
 ('All India Institute of Medical Sciences (AIIMS), New Delhi'),
@@ -354,32 +372,86 @@ INSERT INTO walkinportal.colleges (name) VALUES
 ('Lady Shri Ram College for Women (LSR), Delhi'),
 ('Christ University, Bangalore');
 
-INSERT INTO walkinportal.qualifications(name) VALUES
+INSERT INTO walkinportal.qualifications(qualification_name) VALUES
 ('Bachelor of Science (B.Sc.) in Computer Science'),
 ('Master of Business Administration (MBA) in Finance'),
 ('Doctor of Medicine (MD) in Internal Medicine'),
 ('Bachelor of Arts (B.A.) in English Literature'),
 ('Certified Public Accountant (CPA)');
 
-INSERT INTO walkinportal.streams(name) VALUES
+INSERT INTO walkinportal.streams(stream_name) VALUES
 ('Institute of Technology'),
 ('Institute of Business Administration'),
 ('Institute of Medicine'),
 ('Institute of Arts and Sciences'),
 ('Institute of Education and Psychology');
 
-INSERT INTO walkinportal.technology(name) VALUES
+INSERT INTO walkinportal.technology(technology) VALUES
 ('Javascript'),
 ('Angular JS'),
 ('React'),
-('Node JS');
+('Node JS'),
+('Others');
 
-INSERT INTO walkinportal.educational_qualifications(users_id, aggreagate_percentage, year_of_passing, qualifications_id, streams_id, colleges_id, college_location) VALUES 
-(3, 85.5, 2022, 1, 1, 1, 'pune'),
-(4, 85.5, 2022, 2, 2, 2, 'pune'),
-(5, 85.5, 2022, 3, 3, 8, 'pune'),
-(6, 85.5, 2022, 4, 4, 9, 'pune'),
-(7, 85.5, 2022, 5, 1, 10, 'pune');
+INSERT INTO walkinportal.job_roles(job_role_icon, job_role_title, gross_compensation_package, role_description, requirements) VALUES
+("/src/assets/Instructional Designer.svg", "Instructional Designer", "Rs. 5,00,000 lpa", "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance", "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"),
+("/src/assets/Software Quality Engineer.svg", "Software Engineer", "Rs. 3,00,000 lpa", "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance", "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"),
+("/src/assets/Software Quality Engineer.svg", "Software Quality Engineer", "Rs. 8,00,000 lpa", "- Generate highly interactive and innovative instructional strategies for e-learning solutions \n- Develop course structure and learning specifications addressing the requirements of the target audience \n- Construct appropriate testing strategies to ensure learners' understanding and performance \n- Address usability issues \n- Keep abreast of new trends in e-learning \n- Ensure that the instructional strategies are as per global standards \n- Prepare instructional design checklists and guidelines \n- Check for quality assurance", "- Experience in creating instructional plans and course maps. \n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction \n- Awareness of different instructional design models and familiarity with instructional and learning theories \n- Awareness of latest trends in e-learning and instructional design \n- Strong client consulting/interfacing skills. \n- Ability to guide clients to focus on specific objectives and teaching points \n- Strong meeting facilitation, presentation and interpersonal skills \n- A thorough understanding of the web as an instructional medium \n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism");
+
+INSERT INTO walkinportal.job_card(job_title, dateandtime, location, general_instructions, instructions_for_the_exam, minimum_system_requirements, process) VALUES
+('Walk In for Designer Job Role',
+'10-Jul-2021 to 11-Jul-2021',
+'Mumbai',
+"- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. \n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+"- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. \n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional. \n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. \n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. \n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam. \n- Candidates cannot use an iOS system/device for this exam.",
+"- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). \n- The latest version of Google Chrome Browser only. \n- Please note that Internet speed should be minimum 1 Mbps. \n- Do not use a MacBook or iPad for the proctored exam.",
+"- Every round is an elimination round. Candidates need to clear all rounds to get selected. \n\nRound I : 4th August, 2018 \nAptitude Test : 25 Questions \n\nRound II (Interview) : 4th August, 2018."
+),
+('Walk In for Multiple Job Roles',
+'03-Jul-2021 to 04-Jul-2021',
+'Mumbai',
+"- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. \n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+"- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. \n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional. \n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. \n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. \n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam. \n- Candidates cannot use an iOS system/device for this exam.",
+"- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). \n- The latest version of Google Chrome Browser only. \n- Please note that Internet speed should be minimum 1 Mbps. \n- Do not use a MacBook or iPad for the proctored exam.",
+"- Every round is an elimination round. Candidates need to clear all rounds to get selected. \n\nRound I : 4th August, 2018 \nAptitude Test : 25 Questions \n\nRound II (Interview) : 4th August, 2018."
+),
+('Walk In for Design and Development Job Role',
+'10-Jul-2021 to 11-Jul-2021',
+'Mumbai',
+"- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. \n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+"- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. \n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional. \n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. \n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. \n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam. \n- Candidates cannot use an iOS system/device for this exam.",
+"- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). \n- The latest version of Google Chrome Browser only. \n- Please note that Internet speed should be minimum 1 Mbps. \n- Do not use a MacBook or iPad for the proctored exam.",
+"- Every round is an elimination round. Candidates need to clear all rounds to get selected. \n\nRound I : 4th August, 2018 \nAptitude Test : 25 Questions \n\nRound II (Interview) : 4th August, 2018."
+);
+
+INSERT INTO walkinportal.job_tags (job_card_id, tag) VALUES
+(2, 'Internship Opportunity for MCA Students');
+
+INSERT INTO walkinportal.time_slots (job_card_id, time) VALUES
+(1, "8:00 AM to 11:00 AM"),
+(1, "1:00 PM to 3:00 PM"),
+(2, "9:00 AM to 11:00 AM"),
+(2, "1:00 PM to 3:00 PM"),
+(3, "10:00 AM to 11:00 AM"),
+(3, "1:00 PM to 3:00 PM");
+
+INSERT INTO walkinportal.job_card_job_roles_preference (job_card_id, job_roles_id) VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2);
+
+INSERT INTO walkinportal.users (first_name, last_name, email, phone_number, profile_image, resume, portfolio_url, reffered_name, is_email_notification) VALUES
+("Prince", "Dhameliya", "prince@gmail.com", 9876543210, "www.profile.com", "fksjfk", "fdfdfd", "shubham", 0);
+
+INSERT INTO walkinportal.educational_qualifications(users_id, aggreagate_percentage, year_of_passing, qualifications_id, streams_id, colleges_id, college_location, other_college_name) VALUES 
+(3, 85.5, 2022, 1, 1, 1, 'pune', ''),
+(4, 85.5, 2022, 2, 2, 2, 'pune', ''),
+(5, 85.5, 2022, 3, 3, 8, 'pune', ''),
+(6, 85.5, 2022, 4, 4, 9, 'pune', ''),
+(7, 85.5, 2022, 5, 1, 10, 'pune', '');
 
 INSERT INTO walkinportal.experienced_professional_qualifications(users_id, year_of_experience , current_ctc , expected_ctc , on_notice_period , notice_period_end_date , notice_period_duration , test_appearence , test_appearence_role) VALUES 
 (4, 1 , 500000 , 1000000 , 1 , '2024-01-02', '2 months',0,''),
@@ -394,42 +466,6 @@ INSERT INTO walkinportal.fresher_professional_qualifications(users_id , test_app
 (5, 0, ''),
 (6, 0, '');
 
-INSERT INTO walkinportal.job_roles( title , icon , gross_compensastion_package , role_description , requirements) VALUES
-('Instructional Designer','image/1.png',500000,'Generate highly interactive and innovative instructional strategies for e-learning solutions',' Experience in creating instructional plans and course maps.'),
-('Software Engineer','image/2.png',600000,'Generate highly interactive and innovative instructional strategies for e-learning solutions',' Experience in creating instructional plans and course maps.'),
-('Software Quality Engineer','image/3.png',700000,'Generate highly interactive and innovative instructional strategies for e-learning solutions',' Experience in creating instructional plans and course maps.');
-
-
-INSERT INTO walkinportal.job_card(title , dateandtime , location , general_instructions , instructions_for_exam , min_system_requirements , process) VALUES
-('Walk In for Designer Job Role',
-'10-Jul-2021 to 11-Jul-2021',
-'Mumbai',
-'- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. - Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.',
-'- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. - Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.
- - The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. - Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. - Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.
- - Candidates cannot use an iOS system/device for this exam.',
- '- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). - The latest version of Google Chrome Browser only. - Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.',
- '- Every round is an elimination round. Candidates need to clear all rounds to get selected. Round I : 4th August, 2018 Aptitude Test : 25 Questions Round II (Interview) : 4th August, 2018.'),
-('Walk In for Multiple Job Roles',
-'03-Jul-2021 to 04-Jul-2021',
-'Mumbai',
-'- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. - Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.',
-'- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. - Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.
- - The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. - Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. - Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.
- - Candidates cannot use an iOS system/device for this exam.',
- '- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). - The latest version of Google Chrome Browser only. - Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.
- ',
- '- Every round is an elimination round. Candidates need to clear all rounds to get selected. Round I : 4th August, 2018 Aptitude Test : 25 Questions Round II (Interview) : 4th August, 2018.'),
-
-('Walk In for Multiple Job Roles',
-'03-Jul-2021 to 04-Jul-2021',
-'Mumbai',
-'- We have a two-year indemnity for permanent candidates. We will provide training to the selected candidates. - Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.',
-'- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes. - Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.
- - The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void. - Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam. - Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.
- - Candidates cannot use an iOS system/device for this exam.',
- '- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above). - The latest version of Google Chrome Browser only. - Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.',
- '- Every round is an elimination round. Candidates need to clear all rounds to get selected. Round I : 4th August, 2018 Aptitude Test : 25 Questions Round II (Interview) : 4th August, 2018.');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
