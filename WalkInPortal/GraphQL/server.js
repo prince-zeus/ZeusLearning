@@ -31,11 +31,8 @@ connection.connect(async (err) => {
         return users;
       },
       async getUser(_, args) {
-        const users = await getQueryResult(`SELECT * FROM users WHERE id = ${args.id}`);
-        console.log(users)
-         const foundUser =  users.find( (user) => String(user.id)  === args.id);
-         console.log(foundUser)
-         return foundUser;
+        const user = await getQueryResult(`SELECT * FROM users WHERE id = ${args.id}`);
+        return user[0];
       },
       async getJobs() {
 
