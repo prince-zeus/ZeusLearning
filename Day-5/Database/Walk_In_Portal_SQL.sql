@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`job_card` (
   `location` VARCHAR(100) NOT NULL,
   `general_instructions` TEXT NULL,
   `instructions_for_the_exam` TEXT NULL,
-  `min_system_requirements` TEXT NULL,
+  `minimum_system_requirements` TEXT NULL,
   `process` TEXT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `job_card_id_UNIQUE` (`id` ASC) VISIBLE)
@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`users` (
   `portfolio_url` VARCHAR(300) NULL,
   `reffered_name` VARCHAR(45) NULL,
   `is_email_notification` TINYINT NULL DEFAULT 0,
+  `password` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `phone_number_UNIQUE` (`phone_number` ASC) VISIBLE)
@@ -146,12 +147,11 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`experienced_professional_qualificatio
   `other_experience_technologies` VARCHAR(60) NOT NULL,
   `other_familiar_technologies` VARCHAR(60) NOT NULL,
   `on_notice_period` TINYINT NOT NULL,
-  `notice_period_end_date` DATETIME NULL,
+  `notice_period_end_date` DATE NULL,
   `notice_period_duration` VARCHAR(45) NULL,
   `test_appearence` TINYINT NOT NULL,
   `test_appearence_role` VARCHAR(45) NULL,
   `users_id` INT NOT NULL,
-  PRIMARY KEY (`users_id`),
   INDEX `fk_experienced_professional_qualifications_users1_idx` (`users_id` ASC) VISIBLE,
   CONSTRAINT `fk_experienced_professional_qualifications_users1`
     FOREIGN KEY (`users_id`)
@@ -169,7 +169,6 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`fresher_professional_qualifications` 
   `test_appearence` TINYINT NOT NULL,
   `test_appearence_role` VARCHAR(45) NULL,
   `users_id` INT NOT NULL,
-  PRIMARY KEY (`users_id`),
   INDEX `fk_fresher_professional_qualifications_users1_idx` (`users_id` ASC) VISIBLE,
   CONSTRAINT `fk_fresher_professional_qualifications_users1`
     FOREIGN KEY (`users_id`)
@@ -198,15 +197,15 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`experience_technologies` (
   `users_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_experience_technologies_technology1_idx` (`technology_id` ASC) VISIBLE,
-  INDEX `fk_experience_technologies_experienced_professional_qualifi_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_experience_technologies_users1_idx` (`users_id` ASC) VISIBLE,
   CONSTRAINT `fk_experience_technologies_technology1`
     FOREIGN KEY (`technology_id`)
     REFERENCES `WalkInPortal`.`technology` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_experience_technologies_experienced_professional_qualifica1`
+  CONSTRAINT `fk_experience_technologies_users1`
     FOREIGN KEY (`users_id`)
-    REFERENCES `WalkInPortal`.`experienced_professional_qualifications` (`users_id`)
+    REFERENCES `WalkInPortal`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -221,20 +220,15 @@ CREATE TABLE IF NOT EXISTS `WalkInPortal`.`familiar_technologies` (
   `users_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_familiar_technologies_technology1_idx` (`technology_id` ASC) VISIBLE,
-  INDEX `fk_familiar_technologies_fresher_professional_qualification_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_familiar_technologies_users1_idx` (`users_id` ASC) VISIBLE,
   CONSTRAINT `fk_familiar_technologies_technology1`
     FOREIGN KEY (`technology_id`)
     REFERENCES `WalkInPortal`.`technology` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_familiar_technologies_fresher_professional_qualifications1`
+  CONSTRAINT `fk_familiar_technologies_users1`
     FOREIGN KEY (`users_id`)
-    REFERENCES `WalkInPortal`.`fresher_professional_qualifications` (`users_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_familiar_technologies_experienced_professional_qualificati1`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `WalkInPortal`.`experienced_professional_qualifications` (`users_id`)
+    REFERENCES `WalkInPortal`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -48,7 +48,7 @@ app.use('/', express.static(path.join(__dirname, '/public')));
 app.use('/api/register', require('./routes/registerRoute.js'));
 app.use('/api/login', require('./routes/loginRoute.js'));
 
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use('/api/jobs', require('./routes/jobsRoute'))
 app.use('/api/appliedjob', require('./routes/appliedJobRoute.js'))
 app.use('/api/jobroles', require('./routes/jobRoles.js'))

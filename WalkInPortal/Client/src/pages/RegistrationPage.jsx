@@ -8,6 +8,8 @@ import EditIcon from '../assets/pen.svg'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import axios from '../api/axios'
+import { useMutation } from '@apollo/client'
+import { RegisterMutation } from '../graphql/mutation'
 
 export default function RegistrationPage() {
   const [currentStep ,setCurrentStep] = useState(1);
@@ -133,6 +135,8 @@ export default function RegistrationPage() {
     setTechnologies(response?.data);
   };
 
+  const [registerMutation] = useMutation(RegisterMutation);
+
   if(user && !is2FAVerified) {
     return <Navigate to="/verify-2fa" state={{from: from}} replace />
   }
@@ -148,10 +152,11 @@ export default function RegistrationPage() {
 
   const handleChange = (event) => {
     const {name, value, type, checked} = event.target;
+
     setFormData(prevFormData => {
         return {
             ...prevFormData,
-            [name]: type === "checkbox" ? +checked : type === "radio" || type === "select-one" ? +value : value
+            [name]: type === "checkbox" ? +checked : type === "radio" || type === "select-one" || (type === "number" && value != "") ? +value : value
         }
     })
   }
@@ -276,13 +281,58 @@ export default function RegistrationPage() {
             test_appearence_role,
             applicantType
         }
-        await axios.post('/api/register',
-            JSON.stringify(registrationFormData),
-            {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
+
+        registerMutation({
+            variables: {
+                registrationFormData
+            },
+            onCompleted: (data) => {
+                setFormData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    password: "",
+                    phone_number: "",
+                    profile_image: "",
+                    resume: "",
+                    portfolio_url: "",
+                    preferred_job_roles: [],
+                    reffered_name: "",
+                    is_email_notification: 0,
+                    aggreagate_percentage: "",
+                    year_of_passing: 0,
+                    qualifications_id: 0,
+                    streams_id: 0,
+                    colleges_id: 0,
+                    other_college_name: "",
+                    college_location: "",
+                    year_of_experience: "",
+                    current_ctc: "",
+                    expected_ctc: "",
+                    experience_technologies: [],
+                    other_experience_technologies: "",
+                    familiar_technologies: [],
+                    other_familiar_technologies: "",
+                    on_notice_period: 0,
+                    notice_period_end_date: "",
+                    notice_period_duration: 0,
+                    test_appearence: 0,
+                    test_appearence_role: ""
+                });
+                alert(data?.register)
+            },
+            onError: (error) => {
+                // Handle the error from the mutation
+                alert(error.message);
             }
-        );
+        })
+        // await axios.post('/api/register',
+        //     JSON.stringify(registrationFormData),
+        //     {
+        //         headers: { 'Content-Type': 'application/json' },
+        //         withCredentials: true
+        //     }
+        // );
         setFormData({
             first_name: "",
             last_name: "",
@@ -470,6 +520,7 @@ export default function RegistrationPage() {
                                     id={`job-card-preference-${index}`} 
                                     name="preferred_job_roles" 
                                     value={id}
+                                    checked={preferred_job_roles.includes(id)}
                                     onChange={handleCheckBoxListChange}
                                 />
                                 <label htmlFor={`job-card-preference-${index}`} className="job-card-checkbox"></label>
@@ -495,6 +546,7 @@ export default function RegistrationPage() {
                             type="checkbox" 
                             name="is_email_notification" 
                             value={is_email_notification}
+                            checked={is_email_notification == 1}
                             onChange={handleChange}
                             id={`send-me-update`} />
                         <label htmlFor={`send-me-update`} className="job-card-checkbox"></label>
@@ -534,8 +586,9 @@ export default function RegistrationPage() {
                                 <div className="registration-text-field-title">Aggregate Percentage*</div>
                                 <input 
                                     className="registration-text-field width-180"
-                                    type="text" 
+                                    type="number" 
                                     name="aggreagate_percentage"
+                                    defaultValue={aggreagate_percentage}
                                     value={aggreagate_percentage}
                                     onChange={handleChange}
                                     placeholder="65" />
@@ -664,7 +717,7 @@ export default function RegistrationPage() {
                                         <div className="registration-text-field-title">Years of Experience*</div>
                                         <input 
                                             className="registration-text-field width-180"
-                                            type="text" 
+                                            type="number" 
                                             name="year_of_experience"
                                             value={year_of_experience}
                                             onChange={handleChange}
@@ -675,7 +728,7 @@ export default function RegistrationPage() {
                                         <div className="registration-text-field-title">Current CTC* (In Rupees)</div>
                                         <input 
                                             className="registration-text-field width-180"
-                                            type="text" 
+                                            type="number" 
                                             name="current_ctc"
                                             value={current_ctc}
                                             onChange={handleChange}
@@ -686,7 +739,7 @@ export default function RegistrationPage() {
                                         <div className="registration-text-field-title">Expected CTC* (In Rupees)</div>
                                         <input 
                                             className="registration-text-field width-180"
-                                            type="text" 
+                                            type="number" 
                                             name="expected_ctc"
                                             value={expected_ctc}
                                             onChange={handleChange}
@@ -705,6 +758,7 @@ export default function RegistrationPage() {
                                                         id={`job-card-expertise-technology-${id}`} 
                                                         name="experience_technologies"
                                                         value={id}
+                                                        checked={experience_technologies.includes(id)}
                                                         onChange={handleCheckBoxListChange}
                                                     />
                                                     <label htmlFor={`job-card-expertise-technology-${id}`} className="job-card-checkbox"></label>
@@ -736,6 +790,7 @@ export default function RegistrationPage() {
                                                     id={`job-card-familiar-technology-${id}`} 
                                                     name="familiar_technologies"
                                                     value={id}
+                                                    checked={familiar_technologies.includes(id)}
                                                     onChange={handleCheckBoxListChange}
                                                 />
                                                 <label htmlFor={`job-card-familiar-technology-${id}`} className="job-card-checkbox"></label>
@@ -859,15 +914,22 @@ export default function RegistrationPage() {
                             applicantType == "fresher" ? <div className="experience-professional-qualification-applicant-container fresher-professional-qualification-applicant-container">
                                 <div className="job-card-preference-container">
                                     <div className="job-card-preference-text">Select All The Technologies You Are Familiar In</div>
-
-                                    {technologies.map((technology) => {
-                                    return (
-                                        <div className="job-card-preference-checkbox-text" key={technology.id}>
-                                            <input type="checkbox" name="job-card-preference" id={`job-card-preference-${technology.id}`} />
-                                            <label htmlFor={`job-card-preference-${technology.id}`} className="job-card-checkbox"></label>
-                                            <div>{technology.technology}</div>
-                                        </div>
-                                    )
+                                    {technologies.map((tech) => {
+                                        const {id, technology} = tech;
+                                        return (
+                                            <div className="job-card-preference-checkbox-text" key={id}>
+                                                <input 
+                                                    type="checkbox" 
+                                                    id={`job-card-familiar-technology-${id}`} 
+                                                    name="familiar_technologies"
+                                                    value={id}
+                                                    checked={familiar_technologies.includes(id)}
+                                                    onChange={handleCheckBoxListChange}
+                                                />
+                                                <label htmlFor={`job-card-familiar-technology-${id}`} className="job-card-checkbox"></label>
+                                                <div>{technology}</div>
+                                            </div>
+                                        )
                                     })}
                                 </div>
 

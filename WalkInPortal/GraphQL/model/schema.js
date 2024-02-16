@@ -11,12 +11,12 @@ export const typeDefs = gql`
         profile_image: String
         resume: String
         portfolio_url: String
+        preferred_job_roles: [JobRoles!]!
         reffered_name: String
         is_email_notification: Int
-        user_job_roles_preference: UserJobRolesPreference!
         educational_qualifications: EducationalQualifications!
-        fresher_professional_qualifications: FresherProfessionalQualifications!
-        experienced_professional_qualifications: ExperiencedProfessionalQualifications!
+        fresher_professional_qualifications: FresherProfessionalQualifications
+        experienced_professional_qualifications: ExperiencedProfessionalQualifications
         user_applied_job_details: [UserAppliedJobDetails!]
     }
 
@@ -24,53 +24,58 @@ export const typeDefs = gql`
         id: ID!
         aggreagate_percentage: Int!
         year_of_passing: Int!
-        college_location: String!
-        other_college_name: String!
+        qualifications_id: Int!
         qualifications: Qualifications!
+        streams_id: Int!
         streams: Streams!
+        colleges_id: Int!
         colleges: Colleges!
+        other_college_name: String!
+        college_location: String!
     }
 
     type FresherProfessionalQualifications {
-        familiar_technologies: FamiliarTechnologies!
+        users_id: Int!
+        familiar_technologies: [Technology!]!
         other_familiar_technologies: String
         test_appearence: Int!
         test_appearence_role: String
     }
 
     type ExperiencedProfessionalQualifications {
+        users_id: Int!
         year_of_experience: Int!
         current_ctc: Int!
         expected_ctc: Int!
-        experience_technologies: ExperienceTechnologies!
+        experience_technologies: [Technology!]!
         other_experience_technologies: String!
-        familiar_technologies: FamiliarTechnologies!
+        familiar_technologies: [Technology!]!
         other_familiar_technologies: String!
         on_notice_period: Int!
         notice_period_end_date: String
         notice_period_duration: String
         test_appearence: Int!
         test_appearence_role: String
-        users: Users!
     }
 
-
     type UserJobRolesPreference {
-        job_roles: [JobRoles!]!
+        job_roles: [JobRoles!]
     }
 
     type JobCardJobRolesPreference {
-        job_roles: [JobRoles!]!
+        job_roles: [JobRoles!]
     }
 
     type UserAppliedJobRolesPreference  {
-        job_roles: [JobRoles!]!
+        job_roles: [JobRoles!]
     }
 
     type UserAppliedJobDetails {
         id: ID!
-        resume_link: Int!
+        resume_link: String!
+        time_slots_id: Int!
         time_slots: TimeSlots!
+        user_applied_job_roles_preference: [JobRoles!]!
     }
 
     type JobCard {
@@ -82,7 +87,7 @@ export const typeDefs = gql`
         instructions_for_the_exam: String
         minimum_system_requirements: String
         process: String
-        job_card_job_roles_preference: JobCardJobRolesPreference!
+        job_card_job_roles_preference: [JobRoles!]!
         time_slots: [TimeSlots!]!
         tags: [JobTags!]
     }
@@ -134,16 +139,77 @@ export const typeDefs = gql`
         id: ID!
         time: String!
     }
-    
-    
+      
     type Query{
-        getUsers: [Users]
-        getUser(id: ID!): Users
-        getJobs: [JobCard]
-        getJob(id: ID!): JobCard
-        getJobRoles: [JobRoles]
-        getQualifications: [Qualifications]
-        getColleges: [Colleges]
-        getStreams: [Streams]
+        users: [Users]
+        user(id: ID!): Users
+        jobs: [JobCard!]
+        job(id: ID!): JobCard
+        appliedJobs: [UserAppliedJobDetails!]
+        appliedJob(id: ID!): UserAppliedJobDetails
+        jobRoles: [JobRoles]
+        qualifications: [Qualifications]
+        colleges: [Colleges]
+        streams: [Streams]
+        technology: [Technology]
+        tags: [JobTags]
+    }
+
+    input Login {
+        email: String!
+        pwd: String!
+    }
+
+    type LoginVerify {
+        userID: Int 
+        accessToken: String 
+        roles: [Int]
+    }
+
+    input Register {
+        first_name: String!
+        last_name: String!
+        email: String!
+        password: String!
+        phone_number: String!
+        profile_image: String
+        resume: String
+        portfolio_url: String
+        preferred_job_roles: [Int!]! # Here I have to check which type fits best JobRoles Or Int
+        reffered_name: String
+        is_email_notification: Int
+        aggreagate_percentage: Int!
+        year_of_passing: Int!
+        qualifications_id: Int!
+        streams_id: Int!
+        colleges_id: Int!
+        other_college_name: String!
+        college_location: String!
+        year_of_experience: Int!
+        current_ctc: Int!
+        expected_ctc: Int!
+        experience_technologies: [Int!]! # Here I have to check which type fits best Technology Or Int
+        other_experience_technologies: String!
+        familiar_technologies: [Int!]! # Here I have to check which type fits best Technology Or Int
+        other_familiar_technologies: String!
+        on_notice_period: Int!
+        notice_period_end_date: String
+        notice_period_duration: String
+        test_appearence: Int!
+        test_appearence_role: String
+        applicantType: String!
+    }
+
+    input ApplyJob {
+        resume_link: String!, 
+        time_slots_id: Int!,
+        selected_job_roles: [Int!]!
+        users_id: Int!
+    }
+
+    type Mutation {
+        login(loginFormData: Login): LoginVerify
+        register(registrationFormData: Register): String
+        applyJob(appliedFormData: ApplyJob): Int
     }
 `;

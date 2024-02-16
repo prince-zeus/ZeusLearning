@@ -3,7 +3,10 @@ import { useAuth } from "../hooks/useAuth";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import ShowPasswordIcon from '../assets/visibility_black_24dp.svg';
 import "./LoginPage.css"
-import axios from '../api/axios.js'
+// import axios from '../api/axios.js'
+import { useMutation } from "@apollo/client";
+import { LoginMutation } from "../graphql/mutation.js";
+
 
 export const LoginPage = () => {
   const { user, login, is2FAVerified } = useAuth();
@@ -15,6 +18,8 @@ export const LoginPage = () => {
     password: "",
     remember: false
   });
+
+  const [loginMutation] = useMutation(LoginMutation);
 
   if(user && !is2FAVerified) {
     return <Navigate to="/verify-2fa" state={{from: from}} replace />
@@ -38,21 +43,37 @@ export const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would usually send a request to your backend to authenticate the user
     try {
-        const response = await axios.post('/api/login',
-            JSON.stringify({ email, pwd: password }),
-            {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true
-            }
-        );
-        await login(response?.data);
-        setFormData({
-          email: "",
-          password: "",
-          remember: false
-        });
+      loginMutation({
+        variables: {
+          loginFormData: {email, pwd: password},
+        },
+        onCompleted: async (data) => {
+          await login(data?.login);
+          setFormData({
+            email: "",
+            password: "",
+            remember: false
+          });
+        },
+        onError: (error) => {
+          // Handle the error from the mutation
+          alert(error.message);
+        },
+      });
+        // const response = await axios.post('/api/login',
+        //     JSON.stringify({ email, pwd: password }),
+        //     {
+        //         headers: { 'Content-Type': 'application/json' },
+        //         withCredentials: true
+        //     }
+        // );
+        // await login(response?.data);
+        // setFormData({
+        //   email: "",
+        //   password: "",
+        //   remember: false
+        // });
     } catch (err) {
         if (!err?.response) {
             alert('No Server Response');

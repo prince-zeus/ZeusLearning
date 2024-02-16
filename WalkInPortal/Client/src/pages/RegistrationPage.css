@@ -267,6 +267,10 @@
     color: #666666;
 }
 
+.registration-phone-number-container .registration-country-code-text-field, .registration-phone-number-container .registration-phone-number-text-field {
+    text-align: center;
+}
+
 .registration-title-text-field-container .width-480 {
     width: 480px;
 }
@@ -288,12 +292,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-input[type="number"]::placeholder {
-             
-    /* Firefox, Chrome, Opera */
-    text-align: center;
 }
 
 .registration-phone-number-container .registration-country-code-text-field {
